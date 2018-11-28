@@ -33,12 +33,12 @@ io.on('connection', (socket) => {
       motorRight.servoWrite(1000);
     }
     if (data == "LEFT"){
-      motorLeft.servoWrite(1000);
-      motorRight.servoWrite(0);
+      motorLeft.servoWrite(2000);
+      motorRight.servoWrite(2000);
     }
     if (data == "RIGHT"){
       motorRight.servoWrite(1000);
-      motorLeft.servoWrite(0);
+      motorLeft.servoWrite(1000);
     }
     console.log(data);
   });
@@ -71,12 +71,11 @@ async function readLine(){
 
   if (whiteCounter >= 10){
     if (gameOver == false){
-      //gameOver = true;
-      //console.log("GAME OVER!!");
-      //io.sockets.emit('GAME OVER');
-      //motorFront.servoWrite(0);
-      //motorBack.servoWrite(0);
-      //motorTurn.servoWrite(1180);
+      gameOver = true;
+      console.log("GAME OVER!!");
+      io.sockets.emit('GAME OVER');
+      motorLeft.servoWrite(0);
+      motorRight.servoWrite(0);
     }
   }
 
